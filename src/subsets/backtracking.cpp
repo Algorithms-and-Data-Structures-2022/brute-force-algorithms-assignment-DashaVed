@@ -37,6 +37,8 @@ namespace assignment {
 
     // здесь должны быть рекурсивные вызовы ...
     // включаем или не включаем элемент с текущим индексом в подмножество (используя битовую маску)
+    generate(set, index, mask, subsets);
+    generate(set, index, set_bit(mask, index), subsets);
   }
 
 }  // namespace assignment

@@ -1,6 +1,8 @@
 #include "assignment/subsets/bit_masking.hpp"
 
 #include <cassert>  // assert
+#include <set>
+#include <array>
 
 #include "assignment/bits.hpp"  // is_bit_set
 
@@ -18,6 +20,15 @@ namespace assignment {
     // 1. Внешний цикл: пробегаемся по всем битовым маскам от 0..00 до 1..11
     // 2. Внутренний цикл: проверка разрядов битовой маски и генерация подмножества, ассоциирующегося с этой маской
     // Tips: для проверки разряда бита на 1 (единицу) используйте функцию is_bit_set
+    for (int mask = 0; mask < num_subsets; mask++){
+      std::vector<int> subset;
+      for (int index = 0; index < num_elems; index++){
+        if (is_bit_set(mask, index)){
+          subset.push_back(index);
+        }
+      }
+      subsets.emplace_back(std::move(subset));
+    }
 
     return subsets;
   }
